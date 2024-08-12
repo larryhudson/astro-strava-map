@@ -35,12 +35,12 @@ export async function GET({ request, url, cookies, redirect }: APIContext) {
 
     console.log('Setting cookie...');
     cookies.set('strava_token', stravaToken, {
-        httpOnly: false,
-        secure: false, // Changed to false for testing
-        sameSite: 'lax', // Changed to lax for testing
+        httpOnly: true,
+        secure: true,
+        sameSite: 'strict',
         path: '/', // Ensure the cookie is available for the entire site
     });
-    console.log('Cookie set. Cookie value:', cookies.get('strava_token'));
+    console.log('Cookie set.');
 
     // Return some debug information in the response
     const debugInfo = JSON.stringify({
