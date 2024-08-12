@@ -31,6 +31,8 @@ export async function GET({ request, url, cookies, redirect }: APIContext) {
 
     const stravaToken = stravaTokenJson.access_token;
 
+    console.log({ stravaToken })
+
     cookies.set('strava_token', stravaToken, {
         httpOnly: false,
         secure: true,
