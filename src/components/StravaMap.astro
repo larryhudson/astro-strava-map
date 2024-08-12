@@ -1,0 +1,9 @@
+---
+import { fetchStravaActivities } from "../lib/strava";
+import { Debug } from "astro:components";
+
+const stravaToken = Astro.cookies.get("strava_token")?.value;
+const activities = await fetchStravaActivities(stravaToken);
+---
+
+<Debug {activities} />
