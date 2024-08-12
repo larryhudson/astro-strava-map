@@ -33,16 +33,27 @@ export async function GET({ request, url, cookies, redirect }: APIContext) {
 
     console.log({ stravaToken })
 
+    console.log('Setting cookie...');
     cookies.set('strava_token', stravaToken, {
         httpOnly: false,
-        secure: true,
-        sameSite: 'strict',
-    })
+        secure: false, // Changed to false for testing
+        sameSite: 'lax', // Changed to lax for testing
+        path: '/', // Ensure the cookie is available for the entire site
+    });
+    console.log('Cookie set. Cookie value:', cookies.get('strava_token'));
 
-    return new Response(null, {
+    // Return some debug information in the response
+    const debugInfo = JSON.stringify({
+        message: 'Authentication successful',
+        tokenSet: Boolean(stravaToken),
+        cookieSet: Boolean(cookies.get('strava_token')),
+    });
+
+    return new Response(debugInfo, {
         status: 302,
         headers: {
-            'Location': '/'
+            'Location': '/',
+            'Content-Type': 'application/json',
         }
-    })
+    });
 }
