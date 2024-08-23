@@ -1,9 +1,10 @@
 ---
 import { fetchStravaActivities } from "../lib/strava";
-import { Debug } from "astro:components";
+import MapWithPaths from "./StravaMap.tsx";
 
 const stravaToken = Astro.cookies.get("strava_token")?.value;
+console.log("the token is", stravaToken);
 const activities = await fetchStravaActivities(stravaToken);
 ---
 
-<Debug {activities} />
+<MapWithPaths client:only="react" {activities} />

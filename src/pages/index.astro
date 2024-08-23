@@ -1,7 +1,7 @@
 ---
-import {Debug} from "astro:components";
+import { Debug } from "astro:components";
 import StravaMap from "../components/StravaMap.astro";
-const stravaTokenCookie = Astro.cookies.get('strava_token')?.value;
+const stravaTokenCookie = Astro.cookies.get("strava_token")?.value;
 const isLoggedIn = !!stravaTokenCookie;
 ---
 
@@ -16,12 +16,18 @@ const isLoggedIn = !!stravaTokenCookie;
 	<body>
 		<h1>Astro</h1>
 
-		{!isLoggedIn ? (
-			<a href="/auth/login">Login with Strava</a>
-		) : (
-			<StravaMap />
-			<Debug {stravaTokenCookie} />
-		)}
-
+		{
+			!isLoggedIn ? (
+				<a href="/auth/login">Login with Strava</a>
+			) : (
+				<StravaMap />
+			)
+		}
 	</body>
 </html>
+
+<style>
+	body {
+		font-family: sans-serif;
+	}
+</style>
