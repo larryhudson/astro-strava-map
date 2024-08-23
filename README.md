@@ -1,4 +1,4 @@
-# Strava Activity Visualizer
+# Strava activities on a map
 
 ## What this project does and how it works
 
@@ -83,6 +83,7 @@ To set up and run this project locally, follow these steps:
    ```
    STRAVA_CLIENT_ID=your_strava_client_id
    STRAVA_CLIENT_SECRET=your_strava_client_secret
+   STRAVA_REDIRECT_URI="http://localhost:4321/auth/callback"
    PUBLIC_MAPBOX_ACCESS_TOKEN=your_mapbox_access_token
    ```
 4. Start the development server with `npm run dev`.
@@ -95,8 +96,6 @@ For more information and to dive deeper into the technologies used in this proje
 - [Astro Documentation](https://docs.astro.build)
 - [Strava API Documentation](https://developers.strava.com/)
 - [Mapbox GL JS Documentation](https://docs.mapbox.com/mapbox-gl-js/)
-- [React Documentation](https://reactjs.org/docs/getting-started.html)
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 
 ## 🧞 Commands
 
