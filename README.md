@@ -2,7 +2,9 @@
 
 ## What this project does and how it works
 
-This project is a web application built with Astro that integrates with the Strava API to visualize your athletic activities. It allows users to authenticate with their Strava account, fetch their activity data, and display it on an interactive map using Mapbox GL. The application showcases how to work with external APIs, handle authentication flows, and create dynamic visualizations using modern web technologies.
+This project is a web application built with Astro that integrates with the Strava API to visualize your athletic activities. The main purpose of this project is to display all of a user's activities on a single map, providing a comprehensive view of their exploration. For example, if a user frequently walks around a city, they can see how much of the city they have covered over time. This visualization allows users to track their progress and discover new areas to explore.
+
+The application allows users to authenticate with their Strava account, fetch their activity data, and display it on an interactive map using Mapbox GL. It showcases how to work with external APIs, handle authentication flows, and create dynamic visualizations using modern web technologies.
 
 ## Key Features
 
