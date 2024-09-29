@@ -1,19 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MapContext } from './StravaMap';
 
-interface Activity {
-    id: number;
-    name: string;
-    distance: number;
-    start_date: string;
-}
+const Sidebar: React.FC = () => {
+    const context = useContext(MapContext);
+    if (!context) throw new Error("Sidebar must be used within a MapContext Provider");
+    const { nearbyActivities, setSelectedActivity, selectedActivity } = context;
 
-interface SidebarProps {
-    activities: Activity[];
-    onActivityClick: (activityId: number) => void;
-    selectedActivity: number | null;
-}
-
-const Sidebar: React.FC<SidebarProps> = ({ activities, onActivityClick, selectedActivity }) => {
     const formatDate = (dateString: string) => {
         const date = new Date(dateString);
         return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -26,14 +18,14 @@ const Sidebar: React.FC<SidebarProps> = ({ activities, onActivityClick, selected
     return (
         <div style={{ width: '25%', height: '100%', overflowY: 'auto', padding: '10px', backgroundColor: '#f0f0f0' }}>
             <h3>Nearby Activities</h3>
-            {activities.length === 0 ? (
+            {nearbyActivities.length === 0 ? (
                 <p>Click on the map to see nearby activities</p>
             ) : (
                 <ul style={{ listStyleType: 'none', padding: 0 }}>
-                    {activities.map((activity) => (
+                    {nearbyActivities.map((activity) => (
                         <li
                             key={activity.id}
-                            onClick={() => onActivityClick(activity.id)}
+                            onClick={() => setSelectedActivity(activity.id)}
                             style={{
                                 cursor: 'pointer',
                                 padding: '10px',
